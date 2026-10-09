@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-accent="electric" data-font="inter">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <meta name="description"
+        content="MathLab — a premium math practice engine with adaptive difficulty, mental math training, study operations, and detailed analytics. Created by Koushik Koley." />
+    <meta name="author" content="Koushik Koley" />
+    <title>∑ MathLab — Premium Math Practice</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='sans-serif'>∑</text></svg>" />
+</head>
+
+<body>
+    <!-- ============== APP SHELL ============== -->
+    <div class="app" id="app" data-sidebar-collapsed="false">
+
+        <!-- ============== SIDEBAR ============== -->
+        <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+            <div class="brand">
+                <span class="brand-mark">∑</span>
+                <span class="brand-name">MathLab</span>
+            </div>
+
+            <nav class="nav" id="mainNav">
+                <button class="nav-item active" data-route="dashboard" aria-label="Dashboard">
+                    <svg viewBox="0 0 24 24" class="nav-icon">
+                        <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" fill="currentColor" />
+                    </svg>
+                    <span>Dashboard</span>
+                </button>
+                <button class="nav-item" data-route="practice" aria-label="Practice">
+                    <svg viewBox="0 0 24 24" class="nav-icon">
+                        <path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h10v2H4v-2z" fill="currentColor" />
+                    </svg>
+                    <span>Practice</span>
+                </button>
+                <button class="nav-item" data-route="targeted" aria-label="Targeted Practice">
+                    <svg viewBox="0 0 24 24" class="nav-icon">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-2h-2v2zm0-4h2V7h-2v6z"
+                            fill="currentColor" />
+                    </svg>
+                    <span>Targeted</span>
+                </button>
+                <button class="nav-item" data-route="mental" aria-label="Mental Math">
+                    <svg viewBox="0 0 24 24" class="nav-icon">
+                        <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 11h-2v-6h2zm0 4h-2v-2h2z"
+                            fill="currentColor" />
+                    </svg>
+                    <span>Mental Math</span>
+                </button>
+                <button class="nav-item" data-route="study" aria-label="Study Operations">
+                    <svg viewBox="0 0 24 24" class="nav-icon">
+                        <path
+                            d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm2 4v2h10V7H7zm0 4v2h10v-2H7zm0 4v2h7v-2H7z"
+                            fill="currentColor" />
+                    </svg>
+                    <span>Study</span>
+                </button>
+                <button class="nav-item" data-route="challenges" aria-label="Challenges">
+                    <svg viewBox="0 0 24 24" class="nav-icon">
+                        <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" fill="currentColor" />
+                    </svg>
+                    <span>Challenges</span>
+                </button>
+                <button class="nav-item" data-route="progress" aria-label="Progress">
+                    <svg viewBox="0 0 24 24" class="nav-icon">
+                        <path d="M3 17l6-6 4 4 8-8v4h2V3h-7v2h4l-7 7-4-4-7 7z" fill="currentColor" />
+                    </svg>
+                    <span>Progress</span>
+                </button>
+                <button class="nav-item" data-route="mistakes" aria-label="Mistakes">
+                    <svg viewBox="0 0 24 24" class="nav-icon">
+                        <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-2h2zm0-4h-2V7h2z"
+                            fill="currentColor" />
+                    </svg>
+                    <span>Mistakes</span>
+                </button>
+                <button class="nav-item" data-route="glossary" aria-label="Glossary">
+                    <svg viewBox="0 0 24 24" class="nav-icon">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.18-2.83l1.24-1.26c.37-.36.58-.86.58-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"
+                            fill="currentColor" />
+                    </svg>
+                    <span>Glossary</span>
+                </button>
+                <button class="nav-item" data-route="settings" aria-label="Settings">
+                    <svg viewBox="0 0 24 24" class="nav-icon">
+                        <path
+                            d="M19.4 12.9a7.5 7.5 0 0 0 0-1.8l2-1.5-2-3.4-2.3 1a7.5 7.5 0 0 0-1.6-.9L15 2H9l-.5 2.3a7.5 7.5 0 0 0-1.6.9l-2.3-1-2 3.4 2 1.5a7.5 7.5 0 0 0 0 1.8l-2 1.5 2 3.4 2.3-1a7.5 7.5 0 0 0 1.6.9L9 22h6l.5-2.3a7.5 7.5 0 0 0 1.6-.9l2.3 1 2-3.4zM12 15.5A3.5 3.5 0 1 1 15.5 12 3.5 3.5 0 0 1 12 15.5z"
+                            fill="currentColor" />
+                    </svg>
+                    <span>Settings</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="xp-bar-container" id="xpBar"></div>
+                <div class="streak-badge" id="sidebarStreak" title="Current daily streak">
+                    <span class="streak-flame">🔥</span>
+                    <span class="streak-count" id="sidebarStreakCount">0</span>
+                    <span class="streak-label">days</span>
+                </div>
+                <div class="user-chip" id="userChip">
+                    <span class="avatar" id="avatarLetter">P</span>
+                    <span class="user-info">
+                        <span class="user-name" id="userName">Player</span>
+                        <span class="user-rank" id="userRank">Rookie</span>
+                    </span>
+                </div>
+                <div class="credit" title="Created by Koushik Koley">
+                    <span class="credit-label">Created by</span>
+                    <span class="credit-name">Koushik Koley</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Resize handle for sidebar -->
+        <div class="sidebar-resize-handle" id="sidebarResizeHandle" aria-label="Drag to resize sidebar" role="separator"
+            tabindex="0"></div>
+
+        <!-- Floating collapse/expand button -->
+        <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" aria-label="Collapse sidebar"
+            title="Collapse sidebar (C)">
+            <svg viewBox="0 0 24 24" class="icon-collapse">
+                <path d="M11.4 10.6L7.8 7l1.4-1.4 4.6 4.6-4.6 4.6L7.8 13.4z M3 6h2v12H3z" fill="currentColor" />
+            </svg>
+            <svg viewBox="0 0 24 24" class="icon-expand" hidden>
+                <path d="M12.6 10.6L16.2 7l-1.4-1.4-4.6 4.6 4.6 4.6 1.4-1.4z M19 6h2v12h-2z" fill="currentColor" />
+            </svg>
+        </button>
+        <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+        <!-- ============== MAIN ============== -->
+        <main class="main" id="main">
+            <header class="topbar">
+                <div class="topbar-title">
+                    <h1 id="pageTitle">Dashboard</h1>
+                    <p id="pageSubtitle">Your math journey at a glance</p>
+                </div>
+                <div class="topbar-actions">
+                    <button class="icon-btn" id="focusModeBtn" title="Toggle focus mode (F)"
+                        aria-label="Toggle focus mode">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 3h6v2H5v4H3V3zm12 0h6v6h-2V5h-4V3zM3 15h2v4h4v2H3v-6zm16 0h2v6h-6v-2h4v-4z"
+                                fill="currentColor" />
+                        </svg>
+                    </button>
+                    <button class="icon-btn" id="settingsGearBtn" title="Quick settings (S)"
+                        aria-label="Quick settings">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M19.4 12.9a7.5 7.5 0 0 0 0-1.8l2-1.5-2-3.4-2.3 1a7.5 7.5 0 0 0-1.6-.9L15 2H9l-.5 2.3a7.5 7.5 0 0 0-1.6.9l-2.3-1-2 3.4 2 1.5a7.5 7.5 0 0 0 0 1.8l-2 1.5 2 3.4 2.3-1a7.5 7.5 0 0 0 1.6.9L9 22h6l.5-2.3a7.5 7.5 0 0 0 1.6-.9l2.3 1 2-3.4zM12 15.5A3.5 3.5 0 1 1 15.5 12 3.5 3.5 0 0 1 12 15.5z"
+                                fill="currentColor" />
+                        </svg>
+                    </button>
+                    <button class="icon-btn" id="themeToggle" title="Toggle theme (Shift+T)" aria-label="Toggle theme">
+                        <svg viewBox="0 0 24 24" class="theme-icon-dark">
+                            <path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" fill="currentColor" />
+                        </svg>
+                        <svg viewBox="0 0 24 24" class="theme-icon-light">
+                            <circle cx="12" cy="12" r="4" fill="currentColor" />
+                            <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                                <line x1="12" y1="2" x2="12" y2="5" />
+                                <line x1="12" y1="19" x2="12" y2="22" />
+                                <line x1="2" y1="12" x2="5" y2="12" />
+                                <line x1="19" y1="12" x2="22" y2="12" />
+                                <line x1="4.2" y1="4.2" x2="6.3" y2="6.3" />
+                                <line x1="17.7" y1="17.7" x2="19.8" y2="19.8" />
+                                <line x1="4.2" y1="19.8" x2="6.3" y2="17.7" />
+                                <line x1="17.7" y1="6.3" x2="19.8" y2="4.2" />
+                            </g>
+                        </svg>
+                    </button>
+                    <button class="icon-btn" id="keyboardHelp" title="Keyboard shortcuts (?)"
+                        aria-label="Keyboard shortcuts">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M20 5H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zM6 13H4v-2h2v2zm4 0H8v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-2-4H6V7h12v2z"
+                                fill="currentColor" />
+                        </svg>
+                    </button>
+                </div>
+            </header>
+
+            <div class="content" id="content">
+
+                <!-- ============== DASHBOARD ============== -->
+                <section class="route active" data-route="dashboard">
+                    <div class="hero-card">
+                        <div class="hero-stats">
+                            <div class="hero-stat">
+                                <span class="hero-stat-value" id="dashTodayQuestions">0</span>
+                                <span class="hero-stat-label">Today's Questions</span>
+                            </div>
+                            <div class="hero-stat">
+                                <span class="hero-stat-value" id="dashTodayAccuracy">—</span>
+                                <span class="hero-stat-label">Today's Accuracy</span>
+                            </div>
+                            <div class="hero-stat">
+                                <span class="hero-stat-value" id="dashStreak">0</span>
+                                <span class="hero-stat-label">Day Streak</span>
+                            </div>
+                        </div>
+                        <div class="hero-cta">
+                            <h2>Ready to train?</h2>
+                            <p>Pick a quick mode below or build a custom practice from scratch.</p>
+                            <div class="hero-actions">
+                                <button class="btn btn-primary btn-lg" data-action="quick-practice">Start Quick
+                                    Practice</button>
+                                <button class="btn btn-ghost btn-lg" data-action="quick-mental">Mental Math</button>
+                                <button class="btn btn-ghost btn-lg" data-action="quick-sprint">60s Sprint</button>
+                                <button class="btn btn-ghost btn-lg" data-action="quick-study">Study Mode</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Strongest Areas</h3>
+                                <span class="badge badge-good">Strengths</span>
+                            </div>
+                            <ul class="strength-list" id="dashStrong">
+                                <li class="empty">No data yet — start practicing to see insights.</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Needs Practice</h3>
+                                <span class="badge badge-warn">Weaknesses</span>
+                            </div>
+                            <ul class="strength-list" id="dashWeak">
+                                <li class="empty">No data yet — start practicing to see insights.</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Personal Records</h3>
+                                <span class="badge badge-accent">PRs</span>
+                            </div>
+                            <ul class="pr-list" id="dashPRs">
+                                <li class="empty">No records yet.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Quick Presets</h3>
+                            <button class="btn btn-ghost btn-sm" data-route-link="practice">Build Custom →</button>
+                        </div>
+                        <div class="preset-grid" id="dashboardPresets"></div>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="card" id="dailyGoalCard">
+                            <!-- Filled by DailyGoal.render() -->
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Quick Actions</h3>
+                                <span class="badge badge-accent">Shortcuts</span>
+                            </div>
+                            <div class="quick-actions-grid">
+                                <button class="btn btn-ghost" data-action="quick-practice">Start Practice</button>
+                                <button class="btn btn-ghost" data-action="quick-mental">Mental Math</button>
+                                <button class="btn btn-ghost" data-action="quick-sprint">60s Sprint</button>
+                                <button class="btn btn-ghost" data-action="quick-marathon">Marathon</button>
+                                <button class="btn btn-ghost" data-action="quick-boss">Boss Challenge</button>
+                                <button class="btn btn-ghost" data-action="quick-study">Study Mode</button>
+                                <button class="btn btn-ghost" data-route-link="targeted">Targeted Practice</button>
+                                <button class="btn btn-ghost" data-route-link="glossary">Glossary</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Recent Sessions</h3>
+                            <button class="btn btn-ghost btn-sm" data-route-link="progress">View All →</button>
+                        </div>
+                        <div class="session-list" id="dashRecentSessions">
+                            <p class="empty">No sessions yet — your practice history appears here.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ============== PRACTICE (Custom Generator) ============== -->
+                <section class="route" data-route="practice">
+                    <div class="practice-layout">
+                        <!-- Config Panel -->
+                        <div class="card config-panel" id="configPanel">
+                            <div class="card-header">
+                                <h3>Practice Generator</h3>
+                                <button class="btn btn-ghost btn-sm" id="loadPresetSelect">Load Preset ▾</button>
+                            </div>
+                            <div class="preset-select-dropdown" id="presetDropdown" hidden>
+                                <button data-preset="beginner-addition">Beginner Addition</button>
+                                <button data-preset="speed-addition">Speed Addition</button>
+                                <button data-preset="mult-tables">Multiplication Tables</button>
+                                <button data-preset="integer-challenge">Integer Challenge</button>
+                                <button data-preset="mental-math">Mental Math</button>
+                                <button data-preset="extreme">Extreme</button>
+                                <button data-preset="square-drill">Square Drill</button>
+                                <button data-preset="cube-drill">Cube Drill</button>
+                                <button data-preset="power-drill">Powers of 2</button>
+                                <button data-preset="percent-drill">Percent Drill</button>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Operation</label>
+                                <div class="option-grid op-grid-extended" id="opGrid">
+                                    <button class="chip active" data-op="addition">+ Addition</button>
+                                    <button class="chip" data-op="subtraction">− Subtraction</button>
+                                    <button class="chip" data-op="multiplication">× Multiplication</button>
+                                    <button class="chip" data-op="division">÷ Division</button>
+                                    <button class="chip" data-op="mixed">∞ Mixed</button>
+                                    <button class="chip" data-op="square">n² Squares</button>
+                                    <button class="chip" data-op="cube">n³ Cubes</button>
+                                    <button class="chip" data-op="sqrt">√ Square Root</button>
+                                    <button class="chip" data-op="cbrt">∛ Cube Root</button>
+                                    <button class="chip" data-op="power">a^b Power</button>
+                                    <button class="chip" data-op="factorial">n! Factorial</button>
+                                    <button class="chip" data-op="percent">% Percent</button>
+                                    <button class="chip" data-op="modulo">mod Modulo</button>
+                                    <button class="chip" data-op="pow2">2ⁿ Powers of 2</button>
+                                    <button class="chip" data-op="pow10">10ⁿ Powers of 10</button>
+                                    <button class="chip" data-op="gcd">GCD</button>
+                                    <button class="chip" data-op="lcm">LCM</button>
+                                    <button class="chip" data-op="trig-value">sin Trig Values</button>
+                                    <button class="chip" data-op="geo-area">▢ Area Calc</button>
+                                    <button class="chip" data-op="geo-volume">▦ Volume Calc</button>
+                                    <button class="chip" data-op="pythagorean">a²+b² Pythagorean</button>
+                                    <button class="chip" data-op="linear-eq-solve">ax+b Linear Eq</button>
+                                    <button class="chip" data-op="log-calc">log Logarithm</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Number Type</label>
+                                <div class="option-grid" id="numTypeGrid">
+                                    <button class="chip active" data-numtype="normal">Normal</button>
+                                    <button class="chip" data-numtype="integer">Integers (±)</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Digits — First Operand</label>
+                                <div class="range-row">
+                                    <input type="range" min="1" max="100" value="3" id="digits1Range" />
+                                    <input type="number" min="1" max="100" value="3" id="digits1Input"
+                                        class="num-input" />
+                                    <span class="hint">digits</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Digits — Second Operand</label>
+                                <div class="range-row">
+                                    <input type="range" min="1" max="100" value="2" id="digits2Range" />
+                                    <input type="number" min="1" max="100" value="2" id="digits2Input"
+                                        class="num-input" />
+                                    <span class="hint">digits</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Number of Operands</label>
+                                <div class="range-row">
+                                    <input type="range" min="2" max="10" value="2" id="operandsRange" />
+                                    <input type="number" min="2" max="10" value="2" id="operandsInput"
+                                        class="num-input" />
+                                    <span class="hint">numbers per equation</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="negControl" hidden>
+                                <label>Negative Number Percentage</label>
+                                <div class="range-row">
+                                    <input type="range" min="0" max="100" value="50" id="negPctRange"
+                                        class="range-accent" />
+                                    <output id="negPctOut" class="num-output">50%</output>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Question Format</label>
+                                <select id="questionFormat" class="select">
+                                    <option value="standard">Standard (a + b = ?)</option>
+                                    <option value="missing">Missing Number (a + ? = c)</option>
+                                    <option value="reverse">Reverse (? + b = c)</option>
+                                    <option value="comparison">Comparison (a + b □ c)</option>
+                                    <option value="multiple">Multiple Choice</option>
+                                    <option value="boolean">True / False</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group" id="divisionOptions" hidden>
+                                <label>Division Mode</label>
+                                <select id="divisionMode" class="select">
+                                    <option value="exact">Exact Only</option>
+                                    <option value="remainder">With Remainders</option>
+                                    <option value="decimal">Decimal Answers</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group" id="carryBorrowOptions" hidden>
+                                <label>Carry / Borrow Control</label>
+                                <select id="carryBorrowMode" class="select">
+                                    <option value="random">Random</option>
+                                    <option value="none">No Carries / Borrows</option>
+                                    <option value="some">Some Carries / Borrows</option>
+                                    <option value="many">Many Carries / Borrows</option>
+                                    <option value="max">Maximum Carries / Borrows</option>
+                                    <option value="acrossZero">Borrow Across Zero</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Questions</label>
+                                <div class="range-row">
+                                    <input type="range" min="5" max="200" value="20" id="questionsRange" />
+                                    <input type="number" min="1" max="500" value="20" id="questionsInput"
+                                        class="num-input" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Timer</label>
+                                <div class="option-grid" id="timerGrid">
+                                    <button class="chip active" data-timer="0">Off</button>
+                                    <button class="chip" data-timer="30">30s</button>
+                                    <button class="chip" data-timer="60">1 min</button>
+                                    <button class="chip" data-timer="120">2 min</button>
+                                    <button class="chip" data-timer="300">5 min</button>
+                                    <button class="chip" data-timer="600">10 min</button>
+                                    <button class="chip" data-timer="custom">Custom</button>
+                                </div>
+                                <input type="number" min="5" max="3600" placeholder="Custom seconds" id="timerCustom"
+                                    class="num-input" hidden style="margin-top:8px" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Speed Mode</label>
+                                <select id="speedMode" class="select">
+                                    <option value="practice">Practice (no pressure)</option>
+                                    <option value="speed">Speed (answer fast)</option>
+                                    <option value="sprint">Sprint (60s challenge)</option>
+                                    <option value="marathon">Marathon (100 questions)</option>
+                                    <option value="mastery">Mastery (until accuracy ≥ 95%)</option>
+                                    <option value="zen">Zen (unlimited, accuracy focus)</option>
+                                    <option value="boss">Boss Challenge (very hard mixed)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group toggles">
+                                <label class="toggle"><input type="checkbox" id="noRepeatToggle" checked /> <span>Avoid
+                                        repeated questions</span></label>
+                                <label class="toggle"><input type="checkbox" id="adaptiveToggle" checked />
+                                    <span>Adaptive difficulty</span></label>
+                                <label class="toggle"><input type="checkbox" id="noOpRepeatToggle" /> <span>No operator
+                                        repetition (mixed)</span></label>
+                                <label class="toggle"><input type="checkbox" id="parenthesesToggle" /> <span>Use
+                                        parentheses (mixed)</span></label>
+                                <label class="toggle"><input type="checkbox" id="focusModeAutoToggle" checked />
+                                    <span>Auto focus mode on start</span></label>
+                            </div>
+
+                            <div class="difficulty-preview">
+                                <span class="difficulty-label">Estimated Difficulty</span>
+                                <div class="difficulty-bar">
+                                    <div class="difficulty-fill" id="difficultyFill" style="width:30%"></div>
+                                </div>
+                                <span class="difficulty-score" id="difficultyScore">3.0 / 10</span>
+                            </div>
+
+                            <button class="btn btn-primary btn-block btn-lg" id="startPracticeBtn">Start
+                                Practice</button>
+                        </div>
+
+                        <!-- Active Practice Area -->
+                        <div class="card practice-area" id="practiceArea">
+                            <div class="practice-idle" id="practiceIdle">
+                                <div class="practice-idle-content">
+                                    <div class="big-icon">∑</div>
+                                    <h2>Configure and start</h2>
+                                    <p>Set up your practice using the panel on the left, then hit <strong>Start
+                                            Practice</strong>. The sidebar will auto-collapse so you can focus. Or pick
+                                        a preset below.</p>
+                                    <div class="quick-modes">
+                                        <button class="btn btn-ghost" data-action="quick-practice">Quick
+                                            Practice</button>
+                                        <button class="btn btn-ghost" data-action="quick-mental">Mental Math</button>
+                                        <button class="btn btn-ghost" data-action="quick-sprint">60s Sprint</button>
+                                        <button class="btn btn-ghost" data-action="quick-marathon">Marathon</button>
+                                        <button class="btn btn-ghost" data-action="quick-boss">Boss Challenge</button>
+                                        <button class="btn btn-ghost" data-action="quick-study">Study Mode</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="practice-active" id="practiceActive" hidden>
+                                <div class="practice-header">
+                                    <div class="practice-progress">
+                                        <span id="progressText">1 / 20</span>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" id="progressFill"></div>
+                                        </div>
+                                    </div>
+                                    <div class="practice-stats">
+                                        <span class="stat-pill"><span class="stat-pill-label">Score</span><span
+                                                class="stat-pill-value" id="liveScore">0</span></span>
+                                        <span class="stat-pill"><span class="stat-pill-label">Correct</span><span
+                                                class="stat-pill-value" id="liveCorrect">0</span></span>
+                                        <span class="stat-pill"><span class="stat-pill-label">Time</span><span
+                                                class="stat-pill-value" id="liveTimer">0:00</span></span>
+                                    </div>
+                                    <button class="icon-btn" id="pauseBtn" title="Pause (Esc)" aria-label="Pause">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" fill="currentColor" />
+                                        </svg>
+                                    </button>
+                                    <button class="icon-btn" id="hintBtn" title="Show hint (H)" aria-label="Show hint">
+                                        <svg viewBox="0 0 24 24">
+                                            <path
+                                                d="M12 2C8.13 2 5 5.13 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h1v3h4v-3h1c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.87-3.13-7-7-7zm0 18c-.55 0-1-.45-1-1h2c0 .55-.45 1-1 1z"
+                                                fill="currentColor" />
+                                        </svg>
+                                    </button>
+                                    <button class="icon-btn" id="bookmarkBtn" title="Bookmark question (B)"
+                                        aria-label="Bookmark question">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"
+                                                fill="currentColor" />
+                                        </svg>
+                                    </button>
+                                    <button class="icon-btn" id="ttsBtn" title="Read question aloud (V)"
+                                        aria-label="Read aloud">
+                                        <svg viewBox="0 0 24 24">
+                                            <path
+                                                d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"
+                                                fill="currentColor" />
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <div class="question-area" id="questionArea">
+                                    <div class="question-text" id="questionText">—</div>
+                                    <div class="answer-input-wrap" id="answerWrap">
+                                        <input type="text" inputmode="numeric" autocomplete="off" class="answer-input"
+                                            id="answerInput" placeholder="Type your answer…" />
+                                        <button class="btn btn-primary" id="submitBtn">Submit</button>
+                                    </div>
+                                    <div class="comparison-options" id="comparisonOptions" hidden>
+                                        <button class="chip chip-lg" data-compare="&lt;">&lt;</button>
+                                        <button class="chip chip-lg" data-compare="=">=</button>
+                                        <button class="chip chip-lg" data-compare="&gt;">&gt;</button>
+                                    </div>
+                                    <div class="mc-options" id="mcOptions" hidden></div>
+                                    <div class="boolean-options" id="booleanOptions" hidden>
+                                        <button class="chip chip-lg" data-bool="true">True</button>
+                                        <button class="chip chip-lg" data-bool="false">False</button>
+                                    </div>
+                                </div>
+
+                                <div class="feedback" id="feedback" hidden></div>
+                                <div class="practice-actions" id="practiceActions" hidden>
+                                    <button class="btn btn-ghost" id="skipBtn">Skip</button>
+                                    <button class="btn btn-primary" id="nextBtn">Next →</button>
+                                </div>
+                            </div>
+
+                            <div class="practice-paused" id="practicePaused" hidden>
+                                <div class="big-icon">II</div>
+                                <h2>Paused</h2>
+                                <button class="btn btn-primary btn-lg" id="resumeBtn">Resume</button>
+                                <button class="btn btn-ghost" id="endEarlyBtn">End Session</button>
+                            </div>
+
+                            <div class="practice-results" id="practiceResults" hidden></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ============== TARGETED PRACTICE ============== -->
+                <section class="route" data-route="targeted">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Targeted Digit Practice</h3>
+                            <span class="badge badge-accent">Smart Drill</span>
+                        </div>
+                        <p class="section-desc">Got weak numbers? Type the specific digits you struggle with (e.g., 7,
+                            19, 27, 189), pick operations and operand lengths, then start a focused practice session
+                            that targets exactly those numbers. Perfect for breaking through mental blocks.</p>
+
+                        <div class="targeted-layout">
+                            <div class="form-group">
+                                <label>Your Weak Numbers <span class="hint">(comma or space separated)</span></label>
+                                <textarea id="targetNumbersInput" class="textarea" rows="3"
+                                    placeholder="e.g. 7, 19, 27, 189, 8, 64"></textarea>
+                                <div class="targeted-preview" id="targetedPreview"><span class="hint">Numbers you enter
+                                        will appear as chips here…</span></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Operations to Practice</label>
+                                <div class="option-grid" id="targetedOps">
+                                    <button class="chip active" data-t-op="addition">+ Addition</button>
+                                    <button class="chip active" data-t-op="subtraction">− Subtraction</button>
+                                    <button class="chip active" data-t-op="multiplication">× Multiplication</button>
+                                    <button class="chip" data-t-op="division">÷ Division</button>
+                                    <button class="chip" data-t-op="mixed">∞ Mixed</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Companion Digits (the other operand)</label>
+                                <div class="option-grid" id="targetedCompanionDigits">
+                                    <button class="chip active" data-cd="1">1-digit</button>
+                                    <button class="chip" data-cd="2">2-digit</button>
+                                    <button class="chip" data-cd="3">3-digit</button>
+                                    <button class="chip" data-cd="4">4-digit</button>
+                                    <button class="chip" data-cd="5">5-digit</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Use My Numbers As</label>
+                                <select id="targetedRole" class="select">
+                                    <option value="either">Either operand (random)</option>
+                                    <option value="first">Always the first operand</option>
+                                    <option value="second">Always the second operand</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Questions</label>
+                                <div class="range-row">
+                                    <input type="range" min="5" max="200" value="30" id="targetedQuestionsRange" />
+                                    <input type="number" min="1" max="500" value="30" id="targetedQuestionsInput"
+                                        class="num-input" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Timer</label>
+                                <div class="option-grid" id="targetedTimerGrid">
+                                    <button class="chip active" data-t-timer="0">Off</button>
+                                    <button class="chip" data-t-timer="60">1 min</button>
+                                    <button class="chip" data-t-timer="120">2 min</button>
+                                    <button class="chip" data-t-timer="300">5 min</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group toggles">
+                                <label class="toggle"><input type="checkbox" id="targetedExactDiv" checked />
+                                    <span>Force exact division (avoid remainders)</span></label>
+                                <label class="toggle"><input type="checkbox" id="targetedAllowNeg" /> <span>Allow
+                                        negative results</span></label>
+                                <label class="toggle"><input type="checkbox" id="targetedFocusMode" checked />
+                                    <span>Auto focus mode on start</span></label>
+                            </div>
+
+                            <button class="btn btn-primary btn-block btn-lg" id="startTargetedBtn">Start Targeted
+                                Practice</button>
+                        </div>
+                    </div>
+
+                    <div class="card targeted-active" id="targetedActiveCard" hidden>
+                        <div class="practice-header">
+                            <div class="practice-progress">
+                                <span id="targetedProgressText">1 / 30</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="targetedProgressFill"></div>
+                                </div>
+                            </div>
+                            <div class="practice-stats">
+                                <span class="stat-pill"><span class="stat-pill-label">Score</span><span
+                                        class="stat-pill-value" id="targetedLiveScore">0</span></span>
+                                <span class="stat-pill"><span class="stat-pill-label">Correct</span><span
+                                        class="stat-pill-value" id="targetedLiveCorrect">0</span></span>
+                                <span class="stat-pill"><span class="stat-pill-label">Time</span><span
+                                        class="stat-pill-value" id="targetedLiveTimer">0:00</span></span>
+                            </div>
+                            <button class="icon-btn" id="targetedQuitBtn" title="Quit" aria-label="Quit">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M19 6.4L17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z"
+                                        fill="currentColor" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="question-area" id="targetedQuestionArea">
+                            <div class="question-text" id="targetedQuestionText">—</div>
+                            <div class="answer-input-wrap" id="targetedAnswerWrap">
+                                <input type="text" inputmode="numeric" autocomplete="off" class="answer-input"
+                                    id="targetedAnswerInput" placeholder="Your answer…" />
+                                <button class="btn btn-primary" id="targetedSubmitBtn">Submit</button>
+                            </div>
+                        </div>
+                        <div class="feedback" id="targetedFeedback" hidden></div>
+                        <div class="practice-actions" id="targetedActions" hidden>
+                            <button class="btn btn-ghost" id="targetedSkipBtn">Skip</button>
+                            <button class="btn btn-primary" id="targetedNextBtn">Next →</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ============== MENTAL MATH ============== -->
+                <section class="route" data-route="mental">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Mental Math Trainer</h3>
+                            <span class="badge badge-accent">Brain Mode</span>
+                        </div>
+                        <p class="section-desc">Train your mental calculation skills with timed challenges and proven
+                            techniques. Each mode targets a specific mental math pattern.</p>
+                        <div class="mental-grid" id="mentalGrid"></div>
+                    </div>
+
+                    <div class="card mental-active" id="mentalActiveCard" hidden>
+                        <div class="practice-header">
+                            <div class="practice-progress">
+                                <span id="mentalProgressText">1 / 10</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="mentalProgressFill"></div>
+                                </div>
+                            </div>
+                            <div class="practice-stats">
+                                <span class="stat-pill"><span class="stat-pill-label">Correct</span><span
+                                        class="stat-pill-value" id="mentalCorrect">0</span></span>
+                                <span class="stat-pill"><span class="stat-pill-label">Streak</span><span
+                                        class="stat-pill-value" id="mentalStreak">0</span></span>
+                            </div>
+                            <button class="icon-btn" id="mentalQuitBtn" title="Quit" aria-label="Quit">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M19 6.4L17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z"
+                                        fill="currentColor" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="mental-question-area" id="mentalQuestionArea">
+                            <div class="mental-prompt" id="mentalPrompt">—</div>
+                            <div class="mental-think" id="mentalThink" hidden>
+                                <span>Think…</span>
+                                <span class="mental-count" id="mentalCount">3</span>
+                            </div>
+                            <div class="mental-answer" id="mentalAnswerWrap" hidden>
+                                <input type="text" inputmode="numeric" autocomplete="off" class="answer-input"
+                                    id="mentalAnswer" placeholder="Your answer…" />
+                                <button class="btn btn-primary" id="mentalSubmit">Submit</button>
+                            </div>
+                            <div class="feedback" id="mentalFeedback" hidden></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ============== STUDY OPERATIONS ============== -->
+                <section class="route" data-route="study">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Study Operations</h3>
+                            <span class="badge badge-accent">Memorize & Drill</span>
+                        </div>
+                        <p class="section-desc">Memorize essential math facts, then drill them. Each study module has a
+                            reference table and a practice mode so you can lock the patterns into memory.</p>
+                        <div class="study-grid" id="studyGrid"></div>
+                    </div>
+
+                    <div class="card study-reference" id="studyReferenceCard" hidden>
+                        <div class="card-header">
+                            <h3 id="studyRefTitle">Reference Table</h3>
+                            <button class="btn btn-ghost btn-sm" id="studyCloseRef">Close</button>
+                        </div>
+                        <div class="study-table-wrap" id="studyTableWrap"></div>
+                        <div class="study-actions">
+                            <button class="btn btn-primary" id="studyStartDrill">Start Drill</button>
+                        </div>
+                    </div>
+
+                    <div class="card study-active" id="studyActiveCard" hidden>
+                        <div class="practice-header">
+                            <div class="practice-progress">
+                                <span id="studyProgressText">1 / 20</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="studyProgressFill"></div>
+                                </div>
+                            </div>
+                            <div class="practice-stats">
+                                <span class="stat-pill"><span class="stat-pill-label">Correct</span><span
+                                        class="stat-pill-value" id="studyLiveCorrect">0</span></span>
+                                <span class="stat-pill"><span class="stat-pill-label">Streak</span><span
+                                        class="stat-pill-value" id="studyLiveStreak">0</span></span>
+                            </div>
+                            <button class="icon-btn" id="studyQuitBtn" title="Quit" aria-label="Quit">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M19 6.4L17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z"
+                                        fill="currentColor" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="question-area" id="studyQuestionArea">
+                            <div class="question-text" id="studyQuestionText">—</div>
+                            <div class="answer-input-wrap" id="studyAnswerWrap">
+                                <input type="text" inputmode="numeric" autocomplete="off" class="answer-input"
+                                    id="studyAnswerInput" placeholder="Your answer…" />
+                                <button class="btn btn-primary" id="studySubmitBtn">Submit</button>
+                            </div>
+                            <div class="flashcard-reveal" id="flashcardReveal" hidden>
+                                <button class="btn btn-primary btn-lg" id="studyShowAnswerBtn">Show Answer</button>
+                            </div>
+                            <div class="flashcard-answer" id="flashcardAnswer" hidden></div>
+                            <div class="flashcard-actions" id="flashcardActions" hidden>
+                                <button class="btn btn-danger" id="studyMissedBtn">Missed it</button>
+                                <button class="btn btn-primary" id="studyGotItBtn">Got it ✓</button>
+                            </div>
+                        </div>
+                        <div class="feedback" id="studyFeedback" hidden></div>
+                        <div class="practice-actions" id="studyActions" hidden>
+                            <button class="btn btn-ghost" id="studySkipBtn">Skip</button>
+                            <button class="btn btn-primary" id="studyNextBtn">Next →</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ============== CHALLENGES ============== -->
+                <section class="route" data-route="challenges">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Speed Modes</h3>
+                            <span class="badge badge-accent">Game Mode</span>
+                        </div>
+                        <p class="section-desc">Pick a structured challenge mode. Each mode has its own scoring,
+                            constraints, and badge.</p>
+                        <div class="challenge-grid" id="challengeGrid"></div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Achievements</h3>
+                            <span class="badge badge-good" id="achCount">0 unlocked</span>
+                        </div>
+                        <div class="achievement-grid" id="achievementGrid"></div>
+                    </div>
+                </section>
+
+                <!-- ============== PROGRESS ============== -->
+                <section class="route" data-route="progress">
+                    <div class="grid-3">
+                        <div class="card stat-card">
+                            <span class="stat-card-label">Total Questions</span>
+                            <span class="stat-card-value" id="totalQuestions">0</span>
+                        </div>
+                        <div class="card stat-card">
+                            <span class="stat-card-label">Overall Accuracy</span>
+                            <span class="stat-card-value" id="overallAccuracy">—</span>
+                        </div>
+                        <div class="card stat-card">
+                            <span class="stat-card-label">Total Sessions</span>
+                            <span class="stat-card-value" id="totalSessions">0</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Accuracy Trend</h3>
+                            <div class="range-toggle">
+                                <button class="chip active" data-range="7">7d</button>
+                                <button class="chip" data-range="14">14d</button>
+                                <button class="chip" data-range="30">30d</button>
+                            </div>
+                        </div>
+                        <canvas id="accuracyChart" class="chart" width="800" height="280"></canvas>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>By Operation</h3>
+                            </div>
+                            <canvas id="operationChart" class="chart" width="380" height="280"></canvas>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>By Digit Length</h3>
+                            </div>
+                            <canvas id="digitChart" class="chart" width="380" height="280"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Session History</h3>
+                            <button class="btn btn-ghost btn-sm" id="clearHistoryBtn">Clear History</button>
+                        </div>
+                        <div class="session-list" id="fullSessionList">
+                            <p class="empty">No sessions yet.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ============== MISTAKES ============== -->
+                <section class="route" data-route="mistakes">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Mistake Analysis</h3>
+                            <div class="filter-row">
+                                <select id="mistakeFilter" class="select select-sm">
+                                    <option value="all">All mistakes</option>
+                                    <option value="addition">Addition</option>
+                                    <option value="subtraction">Subtraction</option>
+                                    <option value="multiplication">Multiplication</option>
+                                    <option value="division">Division</option>
+                                    <option value="mixed">Mixed</option>
+                                    <option value="square">Squares</option>
+                                    <option value="cube">Cubes</option>
+                                    <option value="power">Powers</option>
+                                </select>
+                                <button class="btn btn-ghost btn-sm" id="clearMistakesBtn">Clear</button>
+                            </div>
+                        </div>
+                        <div class="mistake-list" id="mistakeList">
+                            <p class="empty">No mistakes recorded. Time to make some — that's how we learn!</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Weakness Patterns</h3>
+                            <span class="badge badge-warn">Auto-detected</span>
+                        </div>
+                        <div class="weakness-grid" id="weaknessGrid">
+                            <p class="empty">Practice more to reveal patterns in your mistakes.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ============== GLOSSARY ============== -->
+                <section class="route" data-route="glossary">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Math Glossary</h3>
+                            <span class="badge badge-accent">Reference</span>
+                        </div>
+                        <p class="section-desc">Searchable definitions of math terms used throughout MathLab. Use the
+                            search box below to find any term.</p>
+                        <div class="form-group">
+                            <input type="text" id="glossarySearch" class="text-input"
+                                placeholder="Search terms (e.g., sine, factorial, derivative)…" />
+                        </div>
+                        <div class="glossary-list" id="glossaryList"></div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Quick Reference</h3>
+                            <span class="badge badge-good">Cheat Sheet</span>
+                        </div>
+                        <div class="glossary-quick-ref">
+                            <div class="gqr-block">
+                                <h4>Operations</h4>
+                                <p>+ addition · − subtraction · × multiplication · ÷ division</p>
+                                <p>% percent · mod modulo · ^ power · ! factorial</p>
+                                <p>n² square · n³ cube · √ root · log logarithm</p>
+                            </div>
+                            <div class="gqr-block">
+                                <h4>Trigonometry</h4>
+                                <p>sin = opposite / hypotenuse</p>
+                                <p>cos = adjacent / hypotenuse</p>
+                                <p>tan = sin / cos</p>
+                                <p>sin²θ + cos²θ = 1</p>
+                            </div>
+                            <div class="gqr-block">
+                                <h4>Geometry</h4>
+                                <p>Circle area = π r²</p>
+                                <p>Sphere volume = (4/3) π r³</p>
+                                <p>Pythagoras: a² + b² = c²</p>
+                            </div>
+                            <div class="gqr-block">
+                                <h4>Calculus</h4>
+                                <p>d/dx (xⁿ) = n xⁿ⁻¹</p>
+                                <p>∫ xⁿ dx = xⁿ⁺¹/(n+1) + C</p>
+                                <p>∫u dv = uv − ∫v du (parts)</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ============== SETTINGS ============== -->
+                <section class="route" data-route="settings">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Profile</h3>
+                        </div>
+                        <div class="form-group">
+                            <label>Display Name</label>
+                            <input type="text" id="settingsName" class="text-input" maxlength="20"
+                                placeholder="Your name" />
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Appearance</h3>
+                        </div>
+                        <div class="form-group">
+                            <label>Theme</label>
+                            <div class="option-grid">
+                                <button class="chip" data-theme-set="dark">🌙 Dark</button>
+                                <button class="chip" data-theme-set="light">☀️ Light</button>
+                                <button class="chip" data-theme-set="auto">💻 System</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Accent Color</label>
+                            <div class="accent-grid" id="accentGrid">
+                                <button class="accent-swatch" data-accent="electric" title="Electric Blue/Purple"><span
+                                        class="swatch swatch-electric"></span>Electric</button>
+                                <button class="accent-swatch" data-accent="sunset" title="Sunset Orange"><span
+                                        class="swatch swatch-sunset"></span>Sunset</button>
+                                <button class="accent-swatch" data-accent="forest" title="Forest Green"><span
+                                        class="swatch swatch-forest"></span>Forest</button>
+                                <button class="accent-swatch" data-accent="ocean" title="Ocean Cyan"><span
+                                        class="swatch swatch-ocean"></span>Ocean</button>
+                                <button class="accent-swatch" data-accent="rose" title="Rose Pink"><span
+                                        class="swatch swatch-rose"></span>Rose</button>
+                                <button class="accent-swatch" data-accent="gold" title="Gold"><span
+                                        class="swatch swatch-gold"></span>Gold</button>
+                                <button class="accent-swatch" data-accent="violet" title="Violet"><span
+                                        class="swatch swatch-violet"></span>Violet</button>
+                                <button class="accent-swatch" data-accent="crimson" title="Crimson"><span
+                                        class="swatch swatch-crimson"></span>Crimson</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Font Family</label>
+                            <div class="option-grid" id="fontFamilyGrid">
+                                <button class="chip" data-font="inter"
+                                    style="font-family:Inter, sans-serif">Inter</button>
+                                <button class="chip" data-font="poppins"
+                                    style="font-family:Poppins, sans-serif">Poppins</button>
+                                <button class="chip" data-font="roboto"
+                                    style="font-family:Roboto, sans-serif">Roboto</button>
+                                <button class="chip" data-font="system"
+                                    style="font-family:-apple-system, sans-serif">System</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Base font size</label>
+                            <div class="range-row">
+                                <input type="range" min="12" max="22" value="14" id="baseFontSizeRange" />
+                                <output id="baseFontSizeOut">14px</output>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Number size</label>
+                            <div class="range-row">
+                                <input type="range" min="14" max="56" value="32" id="numberSizeRange" />
+                                <output id="numberSizeOut">32px</output>
+                            </div>
+                        </div>
+                        <div class="form-group toggles">
+                            <label class="toggle"><input type="checkbox" id="highContrastToggle" /> <span>High contrast
+                                    mode</span></label>
+                            <label class="toggle"><input type="checkbox" id="reduceMotionToggle" /> <span>Reduce
+                                    animations</span></label>
+                            <label class="toggle"><input type="checkbox" id="largeInputToggle" /> <span>Large answer
+                                    input</span></label>
+                            <label class="toggle"><input type="checkbox" id="soundToggle" checked /> <span>Sound
+                                    effects</span></label>
+                            <label class="toggle"><input type="checkbox" id="autoNextToggle" checked />
+                                <span>Auto-advance after correct answer</span></label>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Panel Visibility</h3>
+                            <span class="badge badge-accent">Customize Sidebar</span>
+                        </div>
+                        <p class="section-desc">Choose which sections appear in your sidebar. Hidden sections are still
+                            accessible via keyboard shortcuts.</p>
+                        <div class="form-group toggles" id="panelVisibilityToggles"></div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Keyboard Shortcuts</h3>
+                            <span class="badge badge-accent">Quick Access</span>
+                        </div>
+                        <table class="kbd-table" id="shortcutsTable"></table>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Data</h3>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-ghost" id="exportDataBtn">Export My Data (JSON)</button>
+                            <button class="btn btn-danger" id="resetDataBtn">Reset All Progress</button>
+                        </div>
+                        <p class="hint">Your data is stored locally in your browser. It never leaves this device.</p>
+                    </div>
+
+                    <div class="card about-card">
+                        <div class="card-header">
+                            <h3>About</h3>
+                        </div>
+                        <div class="about-content">
+                            <div class="about-brand">
+                                <span class="brand-mark big">∑</span>
+                                <div>
+                                    <h2>MathLab</h2>
+                                    <p>Premium Math Practice Software</p>
+                                </div>
+                            </div>
+                            <div class="about-credit">
+                                <span>Created by</span>
+                                <strong>Koushik Koley</strong>
+                            </div>
+                            <p class="hint">A configurable math practice engine with adaptive difficulty, mental math
+                                training, study operations, and detailed analytics. Built with vanilla HTML, CSS, and
+                                JavaScript — no frameworks, no dependencies.</p>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- ============== QUICK SETTINGS SLIDE-OUT ============== -->
+    <div class="settings-panel-backdrop" id="settingsBackdrop" hidden></div>
+    <aside class="settings-panel" id="settingsPanel" aria-label="Quick settings" hidden>
+        <div class="settings-panel-header">
+            <h2>Quick Settings</h2>
+            <button class="icon-btn" id="closeSettingsPanel" aria-label="Close settings">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 6.4L17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z"
+                        fill="currentColor" />
+                </svg>
+            </button>
+        </div>
+        <div class="settings-panel-body">
+            <div class="form-group">
+                <label>Theme</label>
+                <div class="option-grid">
+                    <button class="chip" data-quick-theme="dark">🌙 Dark</button>
+                    <button class="chip" data-quick-theme="light">☀️ Light</button>
+                    <button class="chip" data-quick-theme="auto">💻 System</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Accent Color</label>
+                <div class="accent-grid accent-grid-compact" id="accentGridQuick">
+                    <button class="accent-swatch" data-accent="electric" title="Electric"><span
+                            class="swatch swatch-electric"></span></button>
+                    <button class="accent-swatch" data-accent="sunset" title="Sunset"><span
+                            class="swatch swatch-sunset"></span></button>
+                    <button class="accent-swatch" data-accent="forest" title="Forest"><span
+                            class="swatch swatch-forest"></span></button>
+                    <button class="accent-swatch" data-accent="ocean" title="Ocean"><span
+                            class="swatch swatch-ocean"></span></button>
+                    <button class="accent-swatch" data-accent="rose" title="Rose"><span
+                            class="swatch swatch-rose"></span></button>
+                    <button class="accent-swatch" data-accent="gold" title="Gold"><span
+                            class="swatch swatch-gold"></span></button>
+                    <button class="accent-swatch" data-accent="violet" title="Violet"><span
+                            class="swatch swatch-violet"></span></button>
+                    <button class="accent-swatch" data-accent="crimson" title="Crimson"><span
+                            class="swatch swatch-crimson"></span></button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Font Family</label>
+                <select id="quickFontFamily" class="select">
+                    <option value="inter">Inter</option>
+                    <option value="poppins">Poppins</option>
+                    <option value="roboto">Roboto</option>
+                    <option value="system">System</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Font Size</label>
+                <div class="range-row">
+                    <input type="range" min="12" max="22" value="14" id="quickFontSize" />
+                    <output id="quickFontSizeOut">14px</output>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Number Size</label>
+                <div class="range-row">
+                    <input type="range" min="14" max="56" value="32" id="quickNumberSize" />
+                    <output id="quickNumberSizeOut">32px</output>
+                </div>
+            </div>
+
+            <div class="form-group toggles">
+                <label class="toggle"><input type="checkbox" id="quickHighContrast" /> <span>High
+                        contrast</span></label>
+                <label class="toggle"><input type="checkbox" id="quickReduceMotion" /> <span>Reduce
+                        motion</span></label>
+                <label class="toggle"><input type="checkbox" id="quickLargeInput" /> <span>Large input</span></label>
+                <label class="toggle"><input type="checkbox" id="quickSound" checked /> <span>Sound
+                        effects</span></label>
+                <label class="toggle"><input type="checkbox" id="quickAutoNext" checked />
+                    <span>Auto-advance</span></label>
+            </div>
+
+            <div class="form-group">
+                <label>Panel Visibility</label>
+                <div class="toggles" id="quickPanelToggles"></div>
+            </div>
+
+            <button class="btn btn-ghost btn-block" id="openFullSettings">Open Full Settings →</button>
+        </div>
+    </aside>
+
+    <!-- ============== MODALS ============== -->
+    <div class="modal-backdrop" id="modalBackdrop" hidden></div>
+    <div class="modal" id="keyboardModal" role="dialog" aria-labelledby="keyboardModalTitle" hidden>
+        <div class="modal-header">
+            <h2 id="keyboardModalTitle">Keyboard Shortcuts</h2>
+            <button class="icon-btn" data-modal-close aria-label="Close">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 6.4L17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z"
+                        fill="currentColor" />
+                </svg>
+            </button>
+        </div>
+        <div class="modal-body">
+            <table class="kbd-table" id="modalShortcutsTable"></table>
+        </div>
+    </div>
+
+    <div class="modal" id="explainModal" role="dialog" aria-labelledby="explainModalTitle" hidden>
+        <div class="modal-header">
+            <h2 id="explainModalTitle">Step-by-step Solution</h2>
+            <button class="icon-btn" data-modal-close aria-label="Close">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 6.4L17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z"
+                        fill="currentColor" />
+                </svg>
+            </button>
+        </div>
+        <div class="modal-body" id="explainBody"></div>
+    </div>
+
+    <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+    <!-- Periodic ad slot (every 15 min) — fixed bottom right, dismissible -->
+    <div class="periodic-ad-container" id="periodicAdSlot" hidden></div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
